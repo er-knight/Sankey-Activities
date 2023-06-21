@@ -1,0 +1,13 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_employee`(
+	IN first_name VARCHAR(50), 
+    IN last_name VARCHAR(50), 
+    IN contact_number VARCHAR(10), 
+    IN email VARCHAR(50), 
+    IN joining_date DATE, 
+    IN address VARCHAR(100), 
+    IN is_project_allocated BOOL
+)
+BEGIN
+	INSERT INTO Employee (first_name, last_name, contact_number, email, joining_date, address, is_project_allocated) 
+    VALUES (first_name, last_name, contact_number, email, joining_date, address, is_project_allocated);
+END

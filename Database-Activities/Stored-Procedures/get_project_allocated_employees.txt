@@ -1,0 +1,5 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_project_allocated_employees`()
+BEGIN
+	SELECT * FROM Employee
+    WHERE is_project_allocated = TRUE;
+END

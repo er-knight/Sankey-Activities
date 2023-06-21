@@ -1,0 +1,5 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_employees_joined_after`(IN joining_date DATE)
+BEGIN
+	SELECT * FROM Employee
+    WHERE Employee.joining_date >= joining_date;
+END

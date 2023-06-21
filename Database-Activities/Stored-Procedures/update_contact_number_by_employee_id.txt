@@ -1,0 +1,6 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_contact_number_by_employee_id`(IN contact_number VARCHAR(10), IN employee_id INT)
+BEGIN
+	UPDATE Employee
+    SET Employee.contact_number = contact_number
+    WHERE Employee.employee_id = employee_id; 
+END
