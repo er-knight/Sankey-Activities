@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="./dmitry-smirnov-Mhh9x_DekCE-unsplash.jpg" alt="">
+        </div>
+        <div class="right">
+            <div class="right-wrapper">
+
+                <div class="login-wrapper">
+                    <div class="text"><span>Welcome back!</span></div>
+                    <div class="heading">
+                        <h2>Login to your account</h2>
+                    </div>
+                </div>
+                <form name="login-form">
+                    <div class="input-with-label">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="incorrect-email"></span>
+                    </div>
+                    <div class="input-with-label">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                        <span class="incorrect-password"></span>
+                    </div>
+                    <div class="wrapper">
+                        <div class="radio-with-label">
+                            <input type="radio" name="remember-me" id="remember-me">
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                        <div class="hyperlink">
+                            <a href="#">Forgot password?</a>
+                        </div>
+                    </div>
+                    <div class="login-button">
+                        <input type="submit" value="Login Now">
+                    </div>
+                </form>
+                <div class="signin-button">
+                    <button><img src="icons8-google-48.png" alt="">Sign-in with Google</button>
+                </div>
+                <div class="signup-message">
+                    <span>Don't have an account? <a href="#">Join free today</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
