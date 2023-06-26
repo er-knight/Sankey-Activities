@@ -39,7 +39,7 @@
                         <div class="input-wrapper">
                             <label for="edit-employee-gender">Gender</label>
                             <select name="edit-employee-gender" id="edit-employee-gender" required>
-                                <option value="" selected disabled></option>
+                                <option value="" selected disabled>Select</option>
                                 <option value="male" id="edit-employee-gender-male">Male</option>
                                 <option value="female" id="edit-employee-gender-female">Female</option>
                                 <option value="other" id="edit-employee-gender-other">Other</option>
@@ -66,22 +66,22 @@
                 <div class="input-fields-container">
                     <div class="input-wrapper">
                         <label for="add-employee-id">Id</label>
-                        <input type="number" name="add-employee-id" id="add-employee-id" min="1" required>
+                        <input type="number" name="add-employee-id" id="add-employee-id" placeholder="Id" min="1" required>
                         <span class="add-id-error"></span>
                     </div>
                     <div class="input-wrapper">
                         <label for="add-employee-name">Name</label>
-                        <input type="text" name="add-employee-name" id="add-employee-name" pattern="^[a-zA-Z]+$"
+                        <input type="text" name="add-employee-name" id="add-employee-name" placeholder="Name" pattern="^[a-zA-Z]+$"
                             title="Only alphabates are allowed in Name." required>
                     </div>
                     <div class="input-wrapper">
                         <label for="add-employee-age">Age</label>
-                        <input type="number" name="add-employee-age" id="add-employee-age" min="18" max="60" required>
+                        <input type="number" name="add-employee-age" id="add-employee-age" placeholder="Age" min="18" max="60" required>
                     </div>
                     <div class="input-wrapper">
                         <label for="add-employee-gender">Gender</label>
                         <select name="add-employee-gender" id="add-employee-gender" required>
-                            <option value="" selected disabled></option>
+                            <option value="" selected disabled>Select</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
