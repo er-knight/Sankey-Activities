@@ -74,12 +74,27 @@ document.forms["add-details-form"].addEventListener("submit", function (event) {
     genderCell.textContent = gender;
     genderCell.setAttribute("style", "text-transform: capitalize");
     const actionCell = row.insertCell();
-    actionCell.setAttribute("class", "action-buttons");
-    actionCell.innerHTML = "<div class='button-wrapper'><button id='edit-button'>Edit</button></div><div class='button-wrapper'><button id='delete-button'>Delete</button></div>"
+    actionCell.setAttribute("class", "action-buttons");    
+
+    const wrapperDiv = document.createElement("div");
+    wrapperDiv.setAttribute("class", "button-wrapper");
+
+    const editButton = document.createElement("button");
+    editButton.setAttribute("class", "edit-button");
+    editButton.textContent = "Edit";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("class", "delete-button");
+    deleteButton.textContent = "Delete";
+
+    wrapperDiv.appendChild(editButton);
+    wrapperDiv.appendChild(deleteButton);
+
+    actionCell.appendChild(wrapperDiv);
 
     addDetailsForm.reset();
 
-    document.getElementById("edit-button").addEventListener("click", function (event) {
+    editButton.addEventListener("click", function (event) {
         console.log("edit clicked");
 
         let idBeforeEdit = parseInt(event.target.parentElement.parentElement.parentElement.id, 10);
@@ -87,13 +102,12 @@ document.forms["add-details-form"].addEventListener("submit", function (event) {
         const nameBeforeEdit = document.getElementById(idBeforeEdit).childNodes[1].textContent;
         const ageBeforeEdit = parseInt(document.getElementById(idBeforeEdit).childNodes[2].textContent, 10);
         const genderBeforeEdit = document.getElementById(idBeforeEdit).childNodes[3].textContent;
-
         
         document.forms["edit-details-form"]["edit-employee-id"].setAttribute("value", idBeforeEdit);
         document.forms["edit-details-form"]["edit-employee-name"].setAttribute("value", nameBeforeEdit);
         document.forms["edit-details-form"]["edit-employee-age"].setAttribute("value", ageBeforeEdit);
-        if (!document.forms["edit-details-form"]["edit-employee-gender"].options["edit-employee-gender-male"].hasAttribute("selected")) {
-            document.forms["edit-details-form"]["edit-employee-gender"].options["edit-employee-gender-male"].toggleAttribute("selected");            
+        if (!document.forms["edit-details-form"]["edit-employee-gender"].options[`edit-employee-gender-${genderBeforeEdit}`].hasAttribute("selected")) {
+            document.forms["edit-details-form"]["edit-employee-gender"].options[`edit-employee-gender-${genderBeforeEdit}`].toggleAttribute("selected");            
         }
         console.log(idBeforeEdit, nameBeforeEdit, ageBeforeEdit, genderBeforeEdit);
 
@@ -139,6 +153,8 @@ document.forms["add-details-form"].addEventListener("submit", function (event) {
                 idBeforeEdit = idAfterEdit;
             }
 
+            editDetailsForm.reset();
+
             const editDetailsFormOverlay = document.getElementsByClassName("edit-form-overlay")[0];
             editDetailsFormOverlay.style.display = "none";
         });
@@ -161,7 +177,7 @@ document.forms["add-details-form"].addEventListener("submit", function (event) {
         // editDetailsFormOverlay.style.display = "none";
     });
 
-    document.getElementById("delete-button").addEventListener("click", function (event) {
+    deleteButton.addEventListener("click", function (event) {
         console.log("delete clicked");
 
         const rowId = parseInt(event.target.parentElement.parentElement.parentElement.id, 10);
@@ -177,4 +193,3 @@ document.forms["add-details-form"].addEventListener("submit", function (event) {
     });
 
 });
-

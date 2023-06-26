@@ -209,7 +209,7 @@ h1, h2, h3 {
     border: none;
 }
 
-#edit-button, #delete-button {
+.edit-button, .delete-button {
     border: none;
     border-radius: 5px;
     height: 25px;
