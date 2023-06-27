@@ -53,13 +53,21 @@ document.forms["add-details-form"].addEventListener("submit", function (event) {
         const titleRow = detailsTable.insertRow();
         titleRow.setAttribute("class", "title-row")
         const idTitleCell = titleRow.insertCell();
+
         idTitleCell.textContent = "Id";
+        idTitleCell.addEventListener("click", handleSortById);
+
         const nameTitleCell = titleRow.insertCell();
         nameTitleCell.textContent = "Name";
+        nameTitleCell.addEventListener("click", handleSortByName);
+
         const ageTitleCell = titleRow.insertCell();
         ageTitleCell.textContent = "Age";
+        ageTitleCell.addEventListener("click", handleSortByAge)
+
         const genderTitleCell = titleRow.insertCell();
         genderTitleCell.textContent = "Gender";
+
         const buttonsTitleCell = titleRow.insertCell();
         buttonsTitleCell.textContent = "Action";
     }
@@ -247,4 +255,119 @@ function deleteButtonClickHandler(event) {
         detailsTable.childNodes[0].remove();
         detailsTable.textContent = "No details to display. Try adding some details.";
     }
+}
+
+function handleSortById(event) {
+    const tableBody = event.target.parentElement.parentElement;
+    const [, ...detailsRows] = event.target.parentElement.parentElement.childNodes;
+
+    if (detailsRows.length === 1) {
+        return;
+    }
+
+    let isSortedAscending = true, isSortedDescending = true;
+    for (let i = 1; i < detailsRows.length; i++) {
+        const currentId = parseInt(detailsRows[i].childNodes[0].textContent);
+        const previousId = parseInt(detailsRows[i - 1].childNodes[0].textContent);
+        if (previousId < currentId) {
+            isSortedDescending = false;
+        } else {
+            isSortedAscending = false;
+        }
+    }
+    const isUnordered = !isSortedAscending && !isSortedDescending;
+
+    if (isSortedDescending || isUnordered) {
+        detailsRows.sort(function(row1, row2) {
+            return parseInt(row1.childNodes[0].textContent) - parseInt(row2.childNodes[0].textContent); 
+        });
+    } else {
+        detailsRows.sort(function(row1, row2) {
+            return parseInt(row2.childNodes[0].textContent) - parseInt(row1.childNodes[0].textContent); 
+        });
+    }
+
+    detailsRows.map(function(row) { row.remove(); });
+    detailsRows.map(function(row) { tableBody.appendChild(row); });
+}
+
+function handleSortByName(event) {
+    const tableBody = event.target.parentElement.parentElement;
+    const [, ...detailsRows] = event.target.parentElement.parentElement.childNodes;
+
+    if (detailsRows.length === 1) {
+        return;
+    }
+
+    let isSortedAscending = true, isSortedDescending = true;
+    for (let i = 1; i < detailsRows.length; i++) {
+        const currentName = detailsRows[i].childNodes[1].textContent.toString();
+        const previousName = detailsRows[i - 1].childNodes[1].textContent.toString();
+        if (previousName < currentName) {
+            isSortedDescending = false;
+        } else if (previousName > currentName) {
+            isSortedAscending = false;
+        }
+    }
+    const isUnordered = !isSortedAscending && !isSortedDescending;
+
+    if (isSortedDescending || isUnordered) {
+        detailsRows.sort(function(row1, row2) {
+            if (row1.childNodes[1].textContent.toString() < row2.childNodes[1].textContent.toString()) {
+                return -1;
+            } else if (row1.childNodes[1].textContent.toString() === row2.childNodes[1].textContent.toString()) {
+                return 0;
+            } else {
+                return 1;
+            }
+        });
+    } else {
+        detailsRows.sort(function(row1, row2) {
+            if (row1.childNodes[1].textContent.toString() < row2.childNodes[1].textContent.toString()) {
+                return 1;
+            } else if (row1.childNodes[1].textContent.toString() === row2.childNodes[1].textContent.toString()) {
+                return 0;
+            } else {
+                return -1;
+            }
+        });
+    }
+
+    detailsRows.map(function(row) { row.remove(); });
+    detailsRows.map(function(row) { tableBody.appendChild(row); });
+}
+
+function handleSortByAge(event) {
+    const tableBody = event.target.parentElement.parentElement;
+    const [, ...detailsRows] = event.target.parentElement.parentElement.childNodes;
+
+    
+    if (detailsRows.length === 1) {
+        return;
+    }
+
+    let isSortedAscending = true, isSortedDescending = true;
+    for (let i = 1; i < detailsRows.length; i++) {
+        const currentAge = parseInt(detailsRows[i].childNodes[2].textContent);
+        const previousAge = parseInt(detailsRows[i - 1].childNodes[2].textContent);
+        if (previousAge < currentAge) {
+            isSortedDescending = false;
+        } else if (previousAge > currentAge) {
+            isSortedAscending = false;
+        }
+    }
+    const isUnordered = !isSortedAscending && !isSortedDescending;
+
+    if (isSortedDescending || isUnordered) {
+        detailsRows.sort(function(row1, row2) {
+            return parseInt(row1.childNodes[2].textContent) - parseInt(row2.childNodes[2].textContent); 
+        });
+    } else {
+        detailsRows.sort(function(row1, row2) {
+            return parseInt(row2.childNodes[2].textContent) - parseInt(row1.childNodes[2].textContent); 
+        });
+    }
+
+    detailsRows.map(function(row) { row.remove(); });
+    detailsRows.map(function(row) { tableBody.appendChild(row); });
 }

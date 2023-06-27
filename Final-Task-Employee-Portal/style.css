@@ -200,6 +200,10 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
+.title-row td:nth-child(1):hover, .title-row td:nth-child(2):hover, .title-row td:nth-child(3):hover {
+    cursor: url(icons8-sort-25.png), default;
+} 
+
 .details-table tr, th, td {
     padding-left: 10px;
     padding-right: 10px;
