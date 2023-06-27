@@ -1,10 +1,9 @@
-let usedIds = new Set();
+// let usedIds = new Set();
+let usedIds = [];
 
 document.addEventListener("DOMContentLoaded", function (event) {
     const editDetailsFormOverlay = document.getElementsByClassName("edit-form-overlay")[0];
     editDetailsFormOverlay.style.display = "none";
-
-    console.log("DOM content loaded!");
 
     // don't show table headers if their is no data
     const detailsTable = document.getElementsByClassName("details-table")[0];
@@ -15,7 +14,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 document.forms["add-details-form"]["add-employee-id"].addEventListener("input", function (event) {
     const id = event.target.value;
-    if (!usedIds.has(id)) {
+    // if (!usedIds.has(id)) {
+    //     event.target.setCustomValidity("");
+    // }
+    if (!usedIds.includes(id)) {
         event.target.setCustomValidity("");
     }
 });
@@ -30,10 +32,14 @@ document.forms["add-details-form"].addEventListener("submit", function (event) {
     const age = parseInt(addDetailsForm["add-employee-age"].value, 10);
     const gender = addDetailsForm["add-employee-gender"].value;
 
-    console.log(id);
+    // if (usedIds.has(id)) {
+    //     const idField = document.getElementById("add-employee-id");
+    //     idField.setCustomValidity("Id is already used. Please use another number.");
+    //     idField.reportValidity();
+    //     return;
+    // }
 
-    if (usedIds.has(id)) {
-        console.log(usedIds, id);
+    if (usedIds.includes(id)) {
         const idField = document.getElementById("add-employee-id");
         idField.setCustomValidity("Id is already used. Please use another number.");
         idField.reportValidity();
@@ -64,7 +70,10 @@ document.forms["add-details-form"].addEventListener("submit", function (event) {
     const idCell = row.insertCell();
     idCell.textContent = id;
 
-    usedIds.add(id); // mark current id as used
+    // usedIds.add(id);
+    if (!usedIds.includes(id)) {
+        usedIds.push(id);
+    } 
 
     const nameCell = row.insertCell();
     nameCell.textContent = name;
@@ -101,7 +110,10 @@ document.forms["add-details-form"].addEventListener("submit", function (event) {
 const editEmployeeIdField = document.forms["edit-details-form"]["edit-employee-id"];
 editEmployeeIdField.addEventListener("input", function(event) {
     const id = event.target.value;
-    if (!usedIds.has(id)) {
+    // if (!usedIds.has(id)) {
+    //     event.target.setCustomValidity("");
+    // }
+    if (!usedIds.includes(id)) {
         event.target.setCustomValidity("");
     }
 });
@@ -109,8 +121,6 @@ editEmployeeIdField.addEventListener("input", function(event) {
 const editDetailsForm = document.forms["edit-details-form"];
 editDetailsForm.addEventListener("submit", function(event) {
     event.preventDefault();
-
-    console.log("edit form submit");
 
     const idBeforeEdit = parseInt(editDetailsForm["edit-employee-id"].getAttribute("placeholder"));
 
@@ -121,9 +131,13 @@ editDetailsForm.addEventListener("submit", function(event) {
 
     const rowToEdit = document.getElementById(idBeforeEdit.toString());
 
-    console.log("idBeforeEdit", idBeforeEdit, "idAfterEdit", idAfterEdit);
-
-    if (idAfterEdit != idBeforeEdit && usedIds.has(idAfterEdit)) {
+    // if (idAfterEdit != idBeforeEdit && usedIds.has(idAfterEdit)) {
+    //     const idField = document.getElementById("edit-employee-id");
+    //     idField.setCustomValidity("Id is already used. Please use another number.");
+    //     idField.reportValidity();
+    //     return;
+    // }
+    if (idAfterEdit != idBeforeEdit && usedIds.includes(idAfterEdit)) {
         const idField = document.getElementById("edit-employee-id");
         idField.setCustomValidity("Id is already used. Please use another number.");
         idField.reportValidity();
@@ -135,9 +149,18 @@ editDetailsForm.addEventListener("submit", function(event) {
     rowToEdit.childNodes[2].textContent = ageAfterEdit;
     rowToEdit.childNodes[3].textContent = genderAfterEdit;
 
+    // if (idBeforeEdit != idAfterEdit) {
+    //     usedIds.delete(idBeforeEdit);
+    //     usedIds.add(idAfterEdit);
+    //     rowToEdit.setAttribute("id", idAfterEdit);
+    // } 
     if (idBeforeEdit != idAfterEdit) {
-        usedIds.delete(idBeforeEdit);
-        usedIds.add(idAfterEdit);
+        if (usedIds.includes(idBeforeEdit)) {
+            usedIds.splice(usedIds.indexOf(idBeforeEdit), 1);
+        }
+        if (!usedIds.includes(idAfterEdit)) {
+            usedIds.push(idAfterEdit);
+        }
         rowToEdit.setAttribute("id", idAfterEdit);
     } 
 
@@ -189,15 +212,12 @@ cancelButton.addEventListener("click", function (event) {
 
 
 function editButtonClickHandler(event) {
-    console.log("edit clicked");
 
     const idBeforeEdit = parseInt(event.target.parentElement.parentElement.parentElement.id, 10);
     const nameBeforeEdit = document.getElementById(idBeforeEdit).childNodes[1].textContent;
     const ageBeforeEdit = parseInt(document.getElementById(idBeforeEdit).childNodes[2].textContent, 10);
     const genderBeforeEdit = document.getElementById(idBeforeEdit).childNodes[3].textContent;
     
-    console.log(idBeforeEdit, nameBeforeEdit, ageBeforeEdit, genderBeforeEdit);
-
     editDetailsForm["edit-employee-id"].setAttribute("value", idBeforeEdit);
     editDetailsForm["edit-employee-id"].setAttribute("placeholder", idBeforeEdit);
     editDetailsForm["edit-employee-name"].setAttribute("value", nameBeforeEdit);
@@ -216,7 +236,6 @@ function editButtonClickHandler(event) {
 }
 
 function deleteButtonClickHandler(event) {
-    console.log("delete clicked");
 
     const rowId = parseInt(event.target.parentElement.parentElement.parentElement.id, 10);
     const rowToDelete = document.getElementById(rowId.toString());
