@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Task Planner</title>
+</head>
+
+<body>
+
+    <div class="header-wrapper">
+        <img src="icon-colored-512.png" class="icon">
+        <h1>Task Planner</h1>
+    </div>
+
+    <div class="container">
+
+        <div id="add-form-overlay">
+            <div class="add-form-wrapper">
+                <div class="h3-wrapper">
+                    <h3>Add New Task</h3>
+                </div>
+                <form name="add-form" id="add-form">
+                    <div class="input-fields-container">
+                        <div class="title-wrapper">
+                            <label for="add-title">Task</label>
+                            <input type="text" id="add-title" pattern="^[a-zA-Z0-9\s]+$" title="Only alphabets and numbers are allowed." required>
+                        </div>
+                        <div class="other-details-wrapper">
+                            <div class="start-date-wrapper">
+                                <label for="add-start-date">Start Date</label>
+                                <input type="date" id="add-start-date" required>
+                            </div>
+                            <div class="end-date-wrapper">
+                                <label for="add-end-date">End Date</label>
+                                <input type="date" id="add-end-date" required>
+                            </div>
+                            <div class="status-wrapper">
+                                <label for="add-status">Status</label>
+                                <select name="add-status" id="add-status" required>
+                                    <option value="" selected disabled>Select Status</option>
+                                    <option value="upcoming">Upcoming</option>
+                                    <option value="in-progress">In Progress</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="past-due">Past Due</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons-container">
+                        <div class="forms-button-wrapper">
+                            <button type="submit" id="add-button">Add</button>
+                        </div>
+                        <div class="forms-button-wrapper">
+                            <button type="button" id="cancel-add-button">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="update-form-overlay">
+            <div class="update-form-wrapper">
+                <div class="h3-wrapper">
+                    <h3>Update Task Details</h3>
+                </div>
+                <form name="update-form" id="update-form">
+                    <div class="input-fields-container">
+                        <div class="title-wrapper">
+                            <label for="update-title">Task</label>
+                            <input type="text" id="update-title" pattern="^[a-zA-Z0-9\s]+$">
+                        </div>
+                        <div class="other-details-wrapper">
+                            <div class="start-date-wrapper">
+                                <label for="update-start-date">Start Date</label>
+                                <input type="date" id="update-start-date">
+                            </div>
+                            <div class="end-date-wrapper">
+                                <label for="update-end-date">End Date</label>
+                                <input type="date" id="update-end-date">
+                            </div>
+                            <div class="status-wrapper">
+                                <label for="update-status">Status</label>
+                                <select name="update-status" id="update-status">
+                                    <option value="" selected disabled>Select Status</option>
+                                    <option value="upcoming">Upcoming</option>
+                                    <option value="in-progress">In Progress</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="past-due">Past Due</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons-container">
+                        <div class="forms-button-wrapper">
+                            <button type="submit" id="update-button">Update</button>
+                        </div>
+                        <div class="forms-button-wrapper">
+                            <button type="button" id="cancel-update-button">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="search-bar-wrapper">
+            <input type="text" placeholder="Search" id="search-bar">
+        </div>
+
+        <div class="add-button-wrapper">
+            <button type="button" id="add-new-button">Add New Task</button>
+        </div>
+        <div id="activities-wrapper">
+            <div class="h2-wrapper">
+                <h2>Scheduled Tasks</h2>
+            </div>
+            <div id="activities-table-wrapper">
+                <table id="activities-table"></table>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

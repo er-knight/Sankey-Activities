@@ -1,0 +1,38 @@
+- Search by Title, Start Date, End Date (Filter)
+
+- Use id="add-button" for add button
+- Use id="cancel-add-button" for cancel add button
+- Use id="update-button" for update edit button
+- Use id="cancel-update-button" for cancel update button
+- Use id="search-button" for search button
+- Use id="cancel-search-button" for cancel search button
+
+
+- add text-over to first column of table
+https://www.geeksforgeeks.org/css-text-overflow-property/
+- add title-column class to first column of table and add tooltip to it on hover
+https://www.w3schools.com/css/css_tooltip.asp
+
+- if table is empty, hide search form also
+
+------
+
+Don't assign ids, add eventlisteners while appending data to table.
+- Use id="edit-button" for edit button in table
+- Use id="delete-button" for delete button in table
+-----
+
+----
+difference between getElementById, ByClassName, querySelector, ....
+----
+----
+how the flow of webpage works, what loads first?
+----
+----
+promises, hoisting, async-await, event-driven approach, event-loop
+----
+
+Notes:
+-----
+- The for attribute of <label> must be equal to the id attribute of the related element to bind them together. A label can also be bound to an element by placing the element inside the <label> element. 
+

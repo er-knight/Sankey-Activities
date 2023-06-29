@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 120px;
+}
+
+.header-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-height: 100px;
+}
+
+h1 {
+    font-family: "Raleway", sans-serif;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.icon {
+    max-width: 50px;
+    max-height: 100%;
+    margin-right: 10px;
+}
+
+#add-form-overlay, #update-form-overlay {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    /* color: rgb(255, 255, 255, 0.8); */
+    background-color: rgb(255, 255, 255, 0.96);
+}
+
+.add-form-overlay {
+    z-index: 2;
+}
+
+.update-form-overlay {
+    z-index: 3;
+}
+
+.add-form-wrapper, .update-form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 10px;
+    padding: 0px 20px 20px 20px;
+    background-color: white;
+}
+
+.add-form-wrapper {
+    z-index: 4;
+}
+
+.update-form-wrapper {
+    z-index: 5;
+}
+
+h2, h3 {
+    font-weight: bold;
+}
+
+.search-form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 10px;
+    padding: 0px 20px 20px 20px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input-fields-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.other-details-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.start-date-wrapper, .end-date-wrapper, .status-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 150px;
+}
+
+label {
+    align-self: flex-start;
+}
+
+.input-wrapper > label {
+    align-self: flex-start;
+}
+
+.title-wrapper input, select {
+    width: 100%;
+    min-height: 20px;
+    border-style: solid; /* border-style: inset (chrome default) */
+    border-width: 1px;
+    border-radius: 5px;
+    border-image: none; /* border-image: initial (chrome default) */
+    margin-top: 2px;
+}
+
+.other-details-wrapper input, select {
+    width: 100%;
+    min-height: 20px;
+    border-style: solid; /* border-style: inset (chrome default) */
+    border-width: 1px;
+    border-radius: 5px;
+    border-image: none; /* border-image: initial (chrome default) */
+    margin-top: 2px;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}  
+
+/* .forms-button-wrapper {
+    width: 100%;
+} */
+
+#add-button, #cancel-add-button, #update-button, #cancel-update-button {
+    margin-top: 10px;
+    margin-left: 8px;
+    border-radius: 5px;
+    border: none;
+    padding: 6px 15px;
+}
+
+#add-button {
+    background-color: rgb(16, 206, 16);
+}
+
+#update-button {
+    background-color: rgb(111, 111, 255);
+}
+
+.search-bar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#search-bar {
+    height: 25px;
+    width: 250px;
+    border-style: solid; /* border-style: inset (chrome default) */
+    border-width: 2px;
+    border-radius: 5px;
+    border-image: none; /* border-image: initial (chrome default) */
+    border-color: rgb(209, 209, 209);
+    padding: 5px;
+}
+
+.add-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+#add-new-button {
+    font-weight: 600;
+    height: 30px;
+    border: none;
+    background-color: rgb(16, 206, 16);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+#activities-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+}
+
+.h2-wrapper {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(250, 250, 250);
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin: 0px;
+}
+
+#activities-table-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#activities-table {
+    border-collapse: collapse;
+}
+
+#title-row td {
+    font-weight: bold;
+}
+
+#title-row td:nth-child(1):hover, #title-row td:nth-child(2):hover, #title-row td:nth-child(3):hover {
+    cursor: url(icons8-sort-25.png), default;
+}
+
+tr td:nth-child(2), tr td:nth-child(3) {
+    width: 112px;
+}
+
+#activities-table tr, th, td {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+#activities-table td {
+    text-align: center;
+}
+
+#activities-table .action-buttons {
+    display: flex;
+    border: none;
+}
+
+.edit-button, .delete-button {
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 80px;
+    margin: 5px 5px;
+    font-weight: 600;
+}
+
+.edit-button {
+    background-color: rgb(111, 111, 255);
+}
+
+.delete-button {
+    background-color: rgb(255, 73, 73);
+}
