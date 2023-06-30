@@ -16,23 +16,63 @@ function editButtonClickHandler(event) {
     updateForm["update-start-date"].setAttribute("value", row.childNodes[1].textContent.toString());
     updateForm["update-end-date"].setAttribute("value", row.childNodes[2].textContent.toString());
 
+    const startDateInput = row.childNodes[1].textContent.toString();
+    const endDateInput = row.childNodes[2].textContent.toString();
+    const todaysDate = getTodaysDate();
+
     switch (row.childNodes[3].textContent.toString()) {
         case "Upcoming":
+            if (startDateInput <= todaysDate && todaysDate <= endDateInput) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress">In Progress</option><option value="completed">Completed</option><option value="past-due" disabled>Past Due</option>`;
+            } else if (startDateInput > todaysDate) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" >Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed" disabled>Completed</option><option value="past-due" disabled>Past Due</option>`;
+            } else if (endDateInput < todaysDate) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed">Completed</option><option value="past-due">Past Due</option>`;
+            } else {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed" disabled>Completed</option><option value="past-due" disabled>Past Due</option>`;
+            }
             if (!updateForm["update-status"].options[1].hasAttribute("selected")) {
                 updateForm["update-status"].options[1].toggleAttribute("selected");
             }
             break;
         case "In Progress":
+            if (startDateInput <= todaysDate && todaysDate <= endDateInput) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress">In Progress</option><option value="completed">Completed</option><option value="past-due" disabled>Past Due</option>`;
+            } else if (startDateInput > todaysDate) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" >Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed" disabled>Completed</option><option value="past-due" disabled>Past Due</option>`;
+            } else if (endDateInput < todaysDate) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed">Completed</option><option value="past-due">Past Due</option>`;
+            } else {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed" disabled>Completed</option><option value="past-due" disabled>Past Due</option>`;
+            }
             if (!updateForm["update-status"].options[2].hasAttribute("selected")) {
                 updateForm["update-status"].options[2].toggleAttribute("selected");
             }
             break;
         case "Completed":
+            if (startDateInput <= todaysDate && todaysDate <= endDateInput) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress">In Progress</option><option value="completed">Completed</option><option value="past-due" disabled>Past Due</option>`;
+            } else if (startDateInput > todaysDate) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" >Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed" disabled>Completed</option><option value="past-due" disabled>Past Due</option>`;
+            } else if (endDateInput < todaysDate) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed">Completed</option><option value="past-due">Past Due</option>`;
+            } else {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed" disabled>Completed</option><option value="past-due" disabled>Past Due</option>`;
+            }
             if (!updateForm["update-status"].options[3].hasAttribute("selected")) {
                 updateForm["update-status"].options[3].toggleAttribute("selected");
             }
             break;
         case "Past Due":
+            if (startDateInput <= todaysDate && todaysDate <= endDateInput) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress">In Progress</option><option value="completed">Completed</option><option value="past-due" disabled>Past Due</option>`;
+            } else if (startDateInput > todaysDate) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" >Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed" disabled>Completed</option><option value="past-due" disabled>Past Due</option>`;
+            } else if (endDateInput < todaysDate) {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed">Completed</option><option value="past-due">Past Due</option>`;
+            } else {
+                updateForm["update-status"].innerHTML = `<option value="" selected disabled>Select Status</option><option value="upcoming" disabled>Upcoming</option><option value="in-progress" disabled>In Progress</option><option value="completed" disabled>Completed</option><option value="past-due" disabled>Past Due</option>`;
+            }
             if (!updateForm["update-status"].options[4].hasAttribute("selected")) {
                 updateForm["update-status"].options[4].toggleAttribute("selected");
             }
@@ -54,18 +94,6 @@ function deleteButtonClickHandler(event) {
         activitiesTable.childNodes[0].remove();
         activitiesTable.textContent = "No tasks scheduled!";
     }
-}
-
-function handleSortByTitle(event) {
-    console.log("sort by title");
-}
-
-function handleSortByStartDate(event) {
-    console.log("sort by start");
-}
-
-function handleSortByEndDate(event) {
-    console.log("sort by end");
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -105,15 +133,15 @@ addForm.addEventListener("submit", function (event) {
 
         const activityTitleCell = titleRow.insertCell();
         activityTitleCell.textContent = "Task";
-        activityTitleCell.addEventListener("click", handleSortByTitle);
+        // activityTitleCell.addEventListener("click", handleSortByTitle);
 
         const startDateTitleCell = titleRow.insertCell();
         startDateTitleCell.textContent = "Start Date";
-        startDateTitleCell.addEventListener("click", handleSortByStartDate);
+        // startDateTitleCell.addEventListener("click", handleSortByStartDate);
 
         const endDateTitleCell = titleRow.insertCell();
         endDateTitleCell.textContent = "End Date";
-        endDateTitleCell.addEventListener("click", handleSortByEndDate)
+        // endDateTitleCell.addEventListener("click", handleSortByEndDate);
 
         const statusTitleCell = titleRow.insertCell();
         statusTitleCell.textContent = "Status";
