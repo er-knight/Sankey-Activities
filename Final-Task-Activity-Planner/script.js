@@ -86,7 +86,8 @@ function deleteButtonClickHandler(event) {
     console.log(event.target.parentElement.parentElement.parentElement);
 
     const row = event.target.parentElement.parentElement.parentElement;
-    row.remove();
+    row.remov
+    e();
 
     const activitiesTable = document.getElementById("activities-table");
 
